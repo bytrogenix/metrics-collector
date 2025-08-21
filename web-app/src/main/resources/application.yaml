@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: 'metrics-collector'
+  cassandra:
+    local-datacenter: 'datacenter1'
+    keyspace-name: 'local'
+    contact-points: 'cassandra'
+  liquibase:
+    enabled: false
+  kafka:
+    bootstrap-servers: 'kafka:29092'
+    client-id: 'local'
+    producer:
+      key-serializer: 'org.apache.kafka.common.serialization.StringSerializer'
+      value-serializer: 'org.springframework.kafka.support.serializer.JsonSerializer'
+      acks: 'all'
+
+management:
+  endpoints:
+    web:
+      basePath: '/public/actuator'
+
+kafka:
+  topic:
+    device-events: 'iot.device.events.dev'

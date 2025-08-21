@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+tasks.jar {
+    archiveFileName = "common.jar"
+}
+
+dependencies {
+    //java
+    implementation 'com.tdunning:t-digest:3.3'
+    compileOnly 'org.projectlombok:lombok:1.18.38'
+    annotationProcessor 'org.projectlombok:lombok:1.18.38'
+
+    //cassandra
+    implementation 'com.datastax.cassandra:cassandra-driver-mapping:3.11.5'
+    implementation 'org.apache.cassandra:java-driver-core:4.19.0'
+    implementation 'org.apache.cassandra:java-driver-query-builder:4.19.0'
+    implementation 'org.apache.cassandra:java-driver-mapper-runtime:4.19.0'
+    annotationProcessor 'org.apache.cassandra:java-driver-mapper-processor:4.19.0'
+}

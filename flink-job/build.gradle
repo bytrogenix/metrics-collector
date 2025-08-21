@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+tasks.named("shadowJar") {
+    archiveFileName.set("flink-job.jar")
+    manifest {
+        attributes 'Main-Class': 'com.bytrogenix.metricscollector.CpuUsageCollectorJob'
+    }
+}
+
+dependencies {
+    implementation project(":common")
+
+    //flink
+    implementation 'org.apache.flink:flink-streaming-java:1.20.2'
+    implementation 'org.apache.flink:flink-clients:1.20.2'
+    implementation 'org.apache.flink:flink-connector-base:1.20.2'
+    implementation 'org.apache.flink:flink-connector-kafka:3.4.0-1.20'
+    implementation 'org.apache.flink:flink-connector-cassandra_2.12:3.2.0-1.19'
+    implementation 'org.apache.flink:flink-json:1.20.2'
+    implementation 'org.apache.flink:flink-statebackend-rocksdb:1.20.2'
+    implementation 'org.apache.flink:flink-streaming-scala_2.12:1.20.2'
+    testImplementation 'org.apache.flink:flink-test-utils:1.20.2'
+
+    //statistics
+    implementation 'com.tdunning:t-digest:3.3'
+}
